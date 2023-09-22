@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34009.444
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimalAPI_Books", "MinimalAPI_Books\MinimalAPI_Books.csproj", "{D0FF537E-0FEE-48EA-A46C-CB31FDE57602}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinimalAPI_Books", "MinimalAPI_Books\MinimalAPI_Books.csproj", "{D0FF537E-0FEE-48EA-A46C-CB31FDE57602}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web_Books", "MVC_Books\Web_Books.csproj", "{90DC1769-1031-4E93-BA20-85AA81E81A9B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D0FF537E-0FEE-48EA-A46C-CB31FDE57602} = {D0FF537E-0FEE-48EA-A46C-CB31FDE57602}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +20,10 @@ Global
 		{D0FF537E-0FEE-48EA-A46C-CB31FDE57602}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0FF537E-0FEE-48EA-A46C-CB31FDE57602}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0FF537E-0FEE-48EA-A46C-CB31FDE57602}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90DC1769-1031-4E93-BA20-85AA81E81A9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90DC1769-1031-4E93-BA20-85AA81E81A9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90DC1769-1031-4E93-BA20-85AA81E81A9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90DC1769-1031-4E93-BA20-85AA81E81A9B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
