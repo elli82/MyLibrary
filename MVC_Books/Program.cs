@@ -1,7 +1,16 @@
+using MVC_Books;
+using Web_Books.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//Add Services
+builder.Services.AddHttpClient<IBookService, BookService>();
+builder.Services.AddScoped<IBookService, BookService>();
+
+StaticDetail.BookAPIBase = builder.Configuration["ServiceUrls:BookAPI"];
 
 var app = builder.Build();
 

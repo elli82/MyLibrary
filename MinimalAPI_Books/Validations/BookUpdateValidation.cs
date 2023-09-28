@@ -1,9 +1,10 @@
 ﻿using FluentValidation;
+using MinimalAPI_Books.Models;
 using MinimalAPI_Books.DTOs;
 
 namespace MinimalAPI_Books.Validations
 {
-    public class BookUpdateValidation: AbstractValidator<UpdateBookDTO>
+    public class BookUpdateValidation: AbstractValidator<Book>
     {
         public BookUpdateValidation()
         {
