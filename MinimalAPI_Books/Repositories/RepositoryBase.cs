@@ -44,12 +44,12 @@ namespace MinimalAPI_Books.Repositories
             var book = await _db.Books.FirstOrDefaultAsync(b => b.Id == id);
                 return book;
         }
-        public async Task<Book> Update(Book book, int id)
+        public async Task<Book> Update(Book book)
         {
-            var updatedBook= await _db.Books.FirstOrDefaultAsync(b => b.Id==id);
+            var updatedBook= await _db.Books.FirstOrDefaultAsync(b => b.Id== book.Id);
             if (updatedBook != null)
             {
-                updatedBook.Id = id;
+                updatedBook.Id = book.Id;
                 updatedBook.Title = book.Title;
                 updatedBook.Author = book.Author;
                 updatedBook.Genre = book.Genre;

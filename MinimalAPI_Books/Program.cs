@@ -85,15 +85,15 @@ app.MapGet("api/books/{id:int}", async (IRepositoryBase bookRepo, int id) =>
 }).WithName("GetBook");
 
 
-app.MapPost("/api/books", async (IRepositoryBase bookRepo, Book book, IValidator<Book> validator) =>
+app.MapPost("/api/books", async (IRepositoryBase bookRepo, Book book /*IValidator<Book> validator*/) =>
 {
     APIResponse response = new () { IsSuccess = false, StatusCode = System.Net.HttpStatusCode.BadRequest };
 
-    var validResult = await validator.ValidateAsync(book);  // does this work? unsure
-    if (!validResult.IsValid)
-    {
-        return Results.BadRequest(response);
-    }
+    //var validResult = await validator.ValidateAsync(book);  // does this work? unsure
+    //if (!validResult.IsValid)
+    //{
+    //    return Results.BadRequest(response);
+    //}
 
     var newBook = await bookRepo.Create(book);
     if(newBook == null)
@@ -110,17 +110,17 @@ app.MapPost("/api/books", async (IRepositoryBase bookRepo, Book book, IValidator
 }).WithName("AddBook").Accepts<Book>("application/json").Produces<APIResponse>(201).Produces(400);
 
 
-app.MapPut("/api/books", async (IRepositoryBase bookRepo, Book book, int id, IValidator<Book>validator) =>
+app.MapPut("/api/books/", async (IRepositoryBase bookRepo, Book book /*IValidator<Book>validator*/) =>
 {
     APIResponse response = new() { IsSuccess = false, StatusCode = System.Net.HttpStatusCode.BadRequest };
 
-    var validResult = await validator.ValidateAsync(book);
-    if (!validResult.IsValid)
-    {
-        response.ErrorMessages.Add(validResult.Errors.FirstOrDefault().ToString());
-    }
+    //var validResult = await validator.ValidateAsync(book);
+    //if (!validResult.IsValid)
+    //{
+    //    response.ErrorMessages.Add(validResult.Errors.FirstOrDefault().ToString());
+    //}
 
-    var updatedBook = await bookRepo.Update(book,id);
+    var updatedBook = await bookRepo.Update(book);
     if(updatedBook != null) 
     {
         response.Result= updatedBook;
@@ -134,7 +134,7 @@ app.MapPut("/api/books", async (IRepositoryBase bookRepo, Book book, int id, IVa
 }).WithName("UpdateBook").Accepts<Book>("application/json").Produces<APIResponse>(200).Produces(400);
 
 
-app.MapDelete("/api/books", async (IRepositoryBase bookRepo, int id) =>
+app.MapDelete("/api/books/{id:int}", async (IRepositoryBase bookRepo, int id) =>
 {
     APIResponse response = new APIResponse() { IsSuccess = false, StatusCode = System.Net.HttpStatusCode.BadRequest };
 
